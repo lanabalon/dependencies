@@ -6,9 +6,9 @@ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
 sudo apt-add-repository --yes --update ppa:ansible/ansible
 sudo apt-get update
-echo "Installing Docker-ce"
+echo "Installing Docker-ce" >> /tmp/runner.log
 sudo apt-get -y install docker-ce
-echo "Installing Ansible"
+echo "Installing Ansible" >> /tmp/runner.log
 sudo apt-get install ansible -y
 
 
@@ -24,16 +24,16 @@ then
 fi
 
 #Installing gitlab-runner 
-echo "Installing gitlab-runner"
+echo "Installing gitlab-runner" > /tmp/runner.log
 curl -L ${GITLAB_URL_RUNNER_PKG} | sudo bash
 sudo apt-get -y install gitlab-runner
 
 #Unregistering gitlab-runner 
-echo "Unregistering gitlab-runner"
+echo "Unregistering gitlab-runner" >> /tmp/runner.log
 sudo gitlab-runner unregister --all-runners
 
 registerAsDocker(){
-	echo "Registering runner as expected DOCKER executor"
+	echo "Registering runner as expected DOCKER executor" >> /tmp/runner.log
 	sudo gitlab-runner register \
 	  --non-interactive \
 	  --name "gitlab-runner-${HOSTNAME}" \
@@ -56,7 +56,7 @@ registerAsDocker(){
 }
 
 registerAsShell(){
-echo "Registering runner as default Shell executor"
+echo "Registering runner as default Shell executor" >> /tmp/runner.log
 	sudo gitlab-runner register \
 	  --non-interactive \
 	  --name "gitlab-runner-${HOSTNAME}" \
@@ -77,6 +77,6 @@ else
 fi
 
 #Restarting gitlab-runner
-echo "Restarting gitlab-runner"
+echo "Restarting gitlab-runner" >> /tmp/runner.log
 sudo gitlab-runner restart
 
