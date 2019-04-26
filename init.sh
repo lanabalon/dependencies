@@ -35,11 +35,10 @@ registerAsDocker(){
         echo "Registering runner as expected DOCKER executor ${GITLAB_URL} ${GITLAB_TOKEN_RUNNER}" 
         sudo gitlab-runner register \
           --non-interactive \
-          --name "gitlab-runner-${HOST}" \
+          --name "grunner-docker-${HOST}" \
           --url "${GITLAB_URL}/" \
           --registration-token "${GITLAB_TOKEN_RUNNER}" \
           --executor 'docker' \
-          --run-untagged="true" \
           --locked="false" \
           --docker-privileged \
           --docker-image 'alpine:3.7'
@@ -49,7 +48,7 @@ registerAsShell(){
 echo "Registering runner as default Shell executor ${GITLAB_URL} ${GITLAB_TOKEN_RUNNER}" >>/tmp/runner-$(date '+%Y%m%d').log
         sudo gitlab-runner register \
           --non-interactive \
-          --name "gitlab-runner-${HOST}" \
+          --name "grunner-shell-${HOST}" \
           --url "${GITLAB_URL}/" \
           --registration-token "${GITLAB_TOKEN_RUNNER}" \
           --executor "shell" \
