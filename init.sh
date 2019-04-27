@@ -31,6 +31,10 @@ sudo apt-get -y install gitlab-runner
 echo "Unregistering gitlab-runner" >> /tmp/runner-$(date '+%Y%m%d').log
 sudo gitlab-runner unregister --all-runners
 
+#          --tag-list 'project_gitlab-runner' \
+#          --run-untagged="false" \
+#          --locked="true" \
+
 registerAsDocker(){
         echo "Registering runner as expected DOCKER executor ${GITLAB_URL} ${GITLAB_TOKEN_RUNNER}" 
         sudo gitlab-runner register \
@@ -39,9 +43,21 @@ registerAsDocker(){
           --url "${GITLAB_URL}/" \
           --registration-token "${GITLAB_TOKEN_RUNNER}" \
           --executor 'docker' \
-          --locked="false" \
+          --tag-list 'project_gitlab-runner' \
+          --run-untagged="false" \
+          --locked="true" \
           --docker-privileged \
           --docker-image 'alpine:3.7'
+
+#        sudo gitlab-runner register \
+#          --non-interactive \
+#          --name "grunner-docker-${HOST}" \
+#          --url "${GITLAB_URL}/" \
+#          --registration-token "${GITLAB_TOKEN_RUNNER}" \
+#          --executor 'docker' \
+#          --locked="false" \
+#          --docker-privileged \
+#          --docker-image 'alpine:3.7'
 }
 
 registerAsShell(){
