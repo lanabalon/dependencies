@@ -31,7 +31,7 @@ log_error() {
 }
 
 install_docker() {
-  log_info "Installing docker"
+  #log_info "Installing docker"
   curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
   sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
   sudo apt-get update
@@ -39,18 +39,18 @@ install_docker() {
 }
 
 unregister_gitlab_runner() {
-  log_info "Unregister gitlab-runner"
+  #log_info "Unregister gitlab-runner"
   sudo gitlab-runner unregister --all-runners
 }
 
 install_gitlab_runner() {
-  log_info "Installing gitlab-runner"
+  #log_info "Installing gitlab-runner"
   curl -L https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.deb.sh | sudo bash
   sudo apt-get -y install gitlab-runner
 }
 
 install_ansible() {
-  log_info "Installing ansible"
+  #log_info "Installing ansible"
   sudo apt-add-repository --yes --update ppa:ansible/ansible
   sudo apt-get install ansible -y
 }
@@ -62,7 +62,7 @@ install_dependencies() {
 }
 
 register_gitlab_runner() {
-  log_info "Register gitlab-runner"
+  #log_info "Register gitlab-runner"
   HOST=`hostname`;
 
   {
