@@ -56,7 +56,7 @@ install_ansible() {
 }
 
 install_dependencies() {
-  log_info "Installing dependencies"
+  #log_info "Installing dependencies"
   sudo apt-get update -y
   sudo apt-get -y install apt-transport-https ca-certificates curl software-properties-common
 }
@@ -164,8 +164,8 @@ done
 #  log_info "install ALL"
 
   install_dependencies
-  install_docker
-  unregister_gitlab_runner
+  #install_docker
+  #unregister_gitlab_runner
   #install_gitlab_runner
   #cat /dev/null > ${CMDFILE}.tpl
   #register_gitlab_runner
