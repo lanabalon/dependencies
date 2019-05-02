@@ -163,9 +163,9 @@ done
 #
 #  log_info "install ALL"
 
-  #install_dependencies
-  #install_docker
-  #unregister_gitlab_runner
+  install_dependencies
+  install_docker
+  unregister_gitlab_runner
   #install_gitlab_runner
   #cat /dev/null > ${CMDFILE}.tpl
   #register_gitlab_runner
