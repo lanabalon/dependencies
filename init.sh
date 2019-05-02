@@ -165,8 +165,8 @@ done
 
   install_dependencies
   install_docker
+  install_gitlab_runner
   unregister_gitlab_runner
-  #install_gitlab_runner
   #cat /dev/null > ${CMDFILE}.tpl
   #register_gitlab_runner
   #register_gitlab_${EXECUTOR}
