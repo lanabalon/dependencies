@@ -149,19 +149,19 @@ parse_args() {
     esac
 }
 
-while [[ "$#" -ge 2 ]]; do
-    psecond=$2;
-    if [[ "$psecond" == "--"* ]];then
-      parse_args "$1" ""
-      shift; 
-    else
-      parse_args "$1" "$2"
-      shift; 
-      shift;
-    fi
-done
-
-  log_info "install ALL"
+#while [[ "$#" -ge 2 ]]; do
+#    psecond=$2;
+#    if [[ "$psecond" == "--"* ]];then
+#      parse_args "$1" ""
+#      shift; 
+#    else
+#      parse_args "$1" "$2"
+#      shift; 
+#      shift;
+#    fi
+#done
+#
+#  log_info "install ALL"
 
   #install_dependencies
   #install_docker
