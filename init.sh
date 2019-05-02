@@ -173,4 +173,4 @@ done
   register_gitlab_runner_tag
   register_gitlab_locked
   cp ${CMDFILE}.tpl ${CMDFILE}.sh
-  #sh ${CMDFILE}.sh
+  sh ${CMDFILE}.sh
